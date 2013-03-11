@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "antiwm.h"
 
@@ -53,7 +54,7 @@ find_window (Window w)
     if (cur->w == w) return cur;
   return NULL;
 }
-      
+
 void
 remove_from_window_list (a_window *w)
 {
@@ -72,7 +73,7 @@ remove_from_window_list (a_window *w)
 void
 set_current_window (a_window *win)
 {
-  a_current_window = win;  
+  a_current_window = win;
 }
 
 void
@@ -88,7 +89,7 @@ next_window ()
   if (a_current_window != NULL)
     {
       a_current_window = a_current_window->next;
-      if (a_current_window == NULL) 
+      if (a_current_window == NULL)
 	{
 	  a_current_window = a_window_head;
 	}
@@ -103,7 +104,7 @@ prev_window ()
   if (a_current_window != NULL)
     {
       set_current_window (a_current_window->prev);
-      if (a_current_window == NULL) 
+      if (a_current_window == NULL)
 	{
 	  a_current_window = a_window_tail;
 	}
@@ -154,9 +155,9 @@ find_last_accessed_window ()
 
   for (cur=a_window_head; cur; cur=cur->next)
     {
-      if (cur->last_access >= last_access 
-	  && cur != a_current_window 
-	  && cur->state == STATE_MAPPED) 
+      if (cur->last_access >= last_access
+	  && cur != a_current_window
+	  && cur->state == STATE_MAPPED)
 	{
 	  most_recent = cur;
 	  last_access = cur->last_access;
@@ -180,7 +181,7 @@ set_active_window (a_window *a_w)
   counter++;
   a_w->last_access = counter;
   if (a_w->scr->bar_is_raised) update_window_names (a_w->scr);
-  XSetInputFocus (dpy, a_w->w, 
+  XSetInputFocus (dpy, a_w->w,
 		  RevertToPointerRoot, CurrentTime);
   XRaiseWindow (dpy, a_w->w);
   update_window_names (a_w->scr);

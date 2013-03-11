@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "antiwm.h"
 
@@ -21,28 +22,28 @@ grab_keys (screen_info *s)
   int i;
 
   for (i='0'; i<='9'; i++)
-    XGrabKey(dpy, XKeysymToKeycode (dpy, i ), AnyModifier, s->key_window, True, 
-	     GrabModeAsync, GrabModeAsync);  
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_TERM ), AnyModifier, s->key_window, True, 
+    XGrabKey(dpy, XKeysymToKeycode (dpy, i ), AnyModifier, s->key_window, True,
+	     GrabModeAsync, GrabModeAsync);
+  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_TERM ), AnyModifier, s->key_window, True,
 	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_EDIT ), AnyModifier, s->key_window, True, 
+  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_EDIT ), AnyModifier, s->key_window, True,
 	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_PREVWINDOW ), AnyModifier, s->key_window, True, 
+  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_PREVWINDOW ), AnyModifier, s->key_window, True,
 	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_NEXTWINDOW ), AnyModifier, s->key_window, True, 
+  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_NEXTWINDOW ), AnyModifier, s->key_window, True,
 	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_TOGGLEBAR ), AnyModifier, s->key_window, True, 
+  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_TOGGLEBAR ), AnyModifier, s->key_window, True,
 	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_LASTWINDOW ), AnyModifier, s->key_window, True, 
+  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_LASTWINDOW ), AnyModifier, s->key_window, True,
 	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_PREFIX ), AnyModifier, s->key_window, True, 
+  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_PREFIX ), AnyModifier, s->key_window, True,
 	   GrabModeAsync, GrabModeAsync);
 }
 
 static void
 grab_prefix_key (Window w)
 {
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_PREFIX ), MODIFIER_PREFIX, w, True, 
+  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_PREFIX ), MODIFIER_PREFIX, w, True,
 	   GrabModeAsync, GrabModeAsync);
 }
 
@@ -66,7 +67,7 @@ manage (a_window *win, screen_info *s)
     {
       fprintf (stderr, "manage.c:manage():Out of memory!\n");
       exit (EXIT_FAILURE);
-    }    
+    }
   strcpy (win->name, hint.res_name);
   XFree (hint.res_name);
   XFree (hint.res_class);
@@ -93,7 +94,7 @@ scanwins(screen_info *s)
 #ifdef DEBUG
   printf ("windows: %d\n", nwins);
 #endif
-  for (i = 0; i < nwins; i++) 
+  for (i = 0; i < nwins; i++)
     {
       XGetWindowAttributes(dpy, wins[i], &attr);
       if (wins[i] == s->bar_window || wins[i] == s->key_window) continue;
