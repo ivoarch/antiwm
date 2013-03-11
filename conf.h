@@ -13,15 +13,15 @@
 #define KEY_TOGGLEBAR   'w'	     /* toggle display of the bar */
 
 /* default commands */
-#define TERM_PROG      "xterm"
-#define EDIT_PROG      "vim"
+#define TERM_PROG      "urxvt"
+#define EDIT_PROG      "emacs"
 #define MENU_PROG      "dmenu_run"
 
 /* appearance */
 #define BAR_FG_COLOR    "Gray60"     /* foreground color */
-#define BAR_BG_COLOR    "Lightgreen" /* bacground color */
-#define BAR_BOLD_COLOR  "Black"      /* indicate current window */
+#define BAR_BG_COLOR    "Black"      /* background color */
+#define BAR_BOLD_COLOR  "Green"      /* indicate current window */
 #define FONT_NAME       "fixed"	     /* font to use */
 #define BAR_PADDING     1	     /* top and bottom bar padding  */
 #define BAR_LOCATION    1	     /* 0=bottom-left 1=top-left 2=bottom-right 3=top-right */
-#define BAR_TIMEOUT     5	     /* time before bar autohides 0=don't autohide */
+#define BAR_TIMEOUT     2	     /* time before bar autohides 0=don't autohide */
