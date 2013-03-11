@@ -4,6 +4,7 @@
 #define KEY_TERM       'c'
 #define KEY_EDIT       'e'
 #define KEY_MENU       'm'
+#define KEY_BANISH     'b'
 #define KEY_PREVWINDOW  'p'
 #define KEY_NEXTWINDOW  'n'
 #define KEY_LASTWINDOW  't'	/* toggle current and previous windows */

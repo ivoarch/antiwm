@@ -192,6 +192,9 @@ handle_key (screen_info *s)
     case KEY_MENU:
 	spawn (MENU_PROG);
       break;
+    case KEY_BANISH:
+	XWarpPointer(dpy, None, s->root, 0, 0, 0, 0, s->root_attr.width, s->root_attr.height);
+      break;
     case KEY_PREVWINDOW:
       prev_window ();
       break;
