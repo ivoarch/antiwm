@@ -189,6 +189,9 @@ handle_key (screen_info *s)
     case KEY_EDIT:
       spawn (EDIT_PROG);
       break;
+    case KEY_MENU:
+	spawn (MENU_PROG);
+      break;
     case KEY_PREVWINDOW:
       prev_window ();
       break;

@@ -3,12 +3,14 @@
 #define MODIFIER_PREFIX ControlMask
 #define KEY_TERM       'c'
 #define KEY_EDIT       'e'
+#define KEY_MENU       'm'
 #define KEY_PREVWINDOW  'p'
-#define KEY_NEXTWINDOW  'n'	
+#define KEY_NEXTWINDOW  'n'
 #define KEY_LASTWINDOW  't'	/* toggle current and previous windows */
 #define KEY_TOGGLEBAR   'w'	/* toggle display of the bar */
 #define TERM_PROG      "xterm"	/* launch a terminal */
 #define EDIT_PROG      "vim"	/* launch an editor */
+#define MENU_PROG      "dmenu_run"
 #define BAR_FG_COLOR    "Gray60"
 #define BAR_BG_COLOR    "Lightgreen"
 #define BAR_BOLD_COLOR  "Black" /* indicate current window */

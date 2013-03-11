@@ -28,6 +28,8 @@ grab_keys (screen_info *s)
 	   GrabModeAsync, GrabModeAsync);
   XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_EDIT ), AnyModifier, s->key_window, True,
 	   GrabModeAsync, GrabModeAsync);
+  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_MENU ), AnyModifier, s->key_window, True,
+           GrabModeAsync, GrabModeAsync);
   XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_PREVWINDOW ), AnyModifier, s->key_window, True,
 	   GrabModeAsync, GrabModeAsync);
   XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_NEXTWINDOW ), AnyModifier, s->key_window, True,
