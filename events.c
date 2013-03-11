@@ -24,7 +24,7 @@ spawn(char *prog)
   if (fork() == 0) {
     if (fork() == 0) {
       putenv(DisplayString(dpy));
-      execlp(prog, prog, 0);
+      execlp(prog, prog, (char *)NULL);
       fprintf(stderr, "antiwm: exec %s ", prog);
       perror(" failed");
       exit(EXIT_FAILURE);
@@ -52,7 +52,7 @@ new_window (XCreateWindowEvent *e)
     }
 }
 
-void 
+void
 unmap_notify (XEvent *ev)
 {
   screen_info *s;
@@ -66,14 +66,14 @@ unmap_notify (XEvent *ev)
     }
 }
 
-void 
+void
 map_request (XEvent *ev)
 {
   screen_info *s;
   a_window *win;
   s = find_screen (ev->xmap.event);
   win = find_window (ev->xmap.window);
-  if (s && win) 
+  if (s && win)
     {
       switch (win->state)
 	{
@@ -102,7 +102,7 @@ destroy_window (XDestroyWindowEvent *ev)
   if (s && win)
     {
       /* go to last window */
-      if (win->state == STATE_MAPPED) last_window (); 
+      if (win->state == STATE_MAPPED) last_window ();
       unmanage (win);
     }
 
@@ -126,17 +126,17 @@ configure_request (XConfigureRequestEvent *e)
       ce.y = 0;
       ce.width = win->scr->root_attr.width;
       ce.height = win->scr->root_attr.height;
-      ce.border_width = 0;      
+      ce.border_width = 0;
       ce.above = None;
       ce.override_redirect = 0;
-      if (e->value_mask & CWStackMode && win->state == STATE_MAPPED) 
+      if (e->value_mask & CWStackMode && win->state == STATE_MAPPED)
 	{
 	  if (e->detail == Above)
 	    {
 	      a_current_window = win;
 	      set_active_window (a_current_window);
 	    }
-	  else if (e->detail == Below && win == a_current_window) 
+	  else if (e->detail == Below && win == a_current_window)
 	    {
 	      last_window ();
 	    }
@@ -175,7 +175,7 @@ handle_key (screen_info *s)
       XSync (dpy, False);
       return;
     }
-  if (XLookupKeysym((XKeyEvent *) &ev, 0) >= '0' 
+  if (XLookupKeysym((XKeyEvent *) &ev, 0) >= '0'
       && XLookupKeysym((XKeyEvent *) &ev, 0) <= '9')
     {
       goto_window_number (XLookupKeysym((XKeyEvent *) &ev, 0) - '0');
@@ -276,7 +276,7 @@ delegate_event (XEvent *ev)
     case KeyPress:
       printf ("KeyPress\n");
       key_press (ev);
-      break;     
+      break;
     case UnmapNotify:
       unmap_notify (ev);
       printf ("UnmapNotify\n");
@@ -308,7 +308,7 @@ void
 handle_events ()
 {
   XEvent ev;
-  for (;;) 
+  for (;;)
     {
       XNextEvent (dpy, &ev);
       delegate_event (&ev);
