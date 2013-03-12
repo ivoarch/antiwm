@@ -11,6 +11,7 @@
 #define KEY_NEXTWINDOW  'n'          /* focus next windows */
 #define KEY_LASTWINDOW  't'	     /* toggle current and previous windows */
 #define KEY_TOGGLEBAR   'w'	     /* toggle display of the bar */
+#define KEY_QUIT        'q'          /* quit antiwm */
 
 /* default commands */
 #define TERM_PROG      "urxvt"

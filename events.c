@@ -16,6 +16,7 @@
 #include "antiwm.h"
 
 extern Display *dpy;
+static Bool running = 1;
 
 void
 spawn(char *prog)
@@ -207,6 +208,9 @@ handle_key (screen_info *s)
     case KEY_LASTWINDOW:
       last_window ();
       break;
+    case KEY_QUIT:
+      running = 0;
+      break;
     default:
       fprintf (stderr, "Unknown key command %c", (char)XKeycodeToKeysym(dpy, ev.xkey.keycode, 0));
       break;
@@ -313,10 +317,9 @@ delegate_event (XEvent *ev)
 void
 handle_events ()
 {
-  XEvent ev;
-  for (;;)
-    {
-      XNextEvent (dpy, &ev);
-      delegate_event (&ev);
+    XEvent ev;
+    while (running &&
+	   !XNextEvent(dpy, &ev)) {
+	delegate_event (&ev);
     }
 }
