@@ -17,10 +17,10 @@ This opens the program bar, which displays currently running windows.
 Jump to each window by number with 'C-t C-<n>, where <n> is the number of the window.
 
 `C-t C-m`
-This opens the menu program.  (**NEW**)
+This opens the menu program.  **NEW**
 
 `C-t C-b`
-This run banish command. (**NEW**)
+This run banish command. **NEW**
 
 `C-t C-p`
 This jumps to the previous window in the window list.
@@ -38,7 +38,7 @@ This toggles between the current window and the last window.
 Sends C-t to the current window.
 
 `C-t C-q`
-Quit Antiwm. (**NEW**)
+Quit Antiwm. **NEW**
 
 NOTE: These are the default settings. There is no antiwm.conf or antirc to edit.
 To configure AntiWM, edit the settings in 'conf.h', then recompile and install.
@@ -63,6 +63,12 @@ This installs AntiWM.
 By default AntiWM installs to /usr/local/bin.
 If this is not where AntiWM should be installed, change the path indicated in the Makefile.
 NOTE: This step should be done as a priviledged user.
+
+Running
+--------
+You have to create/edit the file `~/.xinitrc` with the following line.
+
+    exec xsetroot -cursor_name left_ptr & exec antiwm
 
 Copying
 -------
