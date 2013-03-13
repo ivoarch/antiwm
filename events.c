@@ -228,6 +228,8 @@ key_press (XEvent *ev)
   if (s && ks == KEY_PREFIX && (modifier & MODIFIER_PREFIX))
     {
       handle_key (s);
+      if (HIDE_CURSOR)
+	  XWarpPointer(dpy, None, s->root, 0, 0, 0, 0, s->root_attr.width, s->root_attr.height);
     }
 }
 

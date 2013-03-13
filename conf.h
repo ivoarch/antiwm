@@ -26,3 +26,4 @@
 #define BAR_PADDING     1	     /* top and bottom bar padding  */
 #define BAR_LOCATION    1	     /* 0=bottom-left 1=top-left 2=bottom-right 3=top-right */
 #define BAR_TIMEOUT     2	     /* time before bar autohides 0=don't autohide */
+#define HIDE_CURSOR     0            /* 1=Pressing a key sends the cursor to the bottom right corner.*/
