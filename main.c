@@ -27,7 +27,7 @@ Atom a_restart;
 screen_info *screens;
 int num_screens;
 Display *dpy;
-int exit_signal = 0;		
+int exit_signal = 0;
 static XFontStruct *font;
 
 char **myargv;
@@ -35,7 +35,7 @@ char **myargv;
 void
 sighandler ()
 {
-  fprintf (stderr, "antiwm: sighander failure\n"); 
+  fprintf (stderr, "antiwm: sighander failure\n");
   clean_up ();
   exit (EXIT_FAILURE);
 }
@@ -43,7 +43,7 @@ sighandler ()
 void
 hup_handler ()
 {
-  fprintf (stderr, "antiwm: restarting\n"); 
+  fprintf (stderr, "antiwm: restarting\n");
   clean_up ();
   execvp(myargv[0], myargv);
 }
@@ -69,7 +69,7 @@ handler (Display *d, XErrorEvent *e)
   if (e->request_code == X_ChangeWindowAttributes && e->error_code == BadAccess) {
     fprintf(stderr, "antiwm: another window manager is running\n");
     exit(EXIT_FAILURE);
-  }  
+  }
   XGetErrorText (d, e->error_code, msg, sizeof (msg));
   fprintf (stderr, "antiwm: %s!\n", msg);
   exit (EXIT_FAILURE);
@@ -79,8 +79,10 @@ int
 main (int argc, char *argv[])
 {
   int i;
+  char *display_name = getenv(DISPLAY);
   myargv = argv;
-  if (!(dpy = XOpenDisplay (NULL)))
+
+  if (!(dpy = XOpenDisplay (display_name)))
     {
       fprintf (stderr, "cannot open display\n");
       return EXIT_FAILURE;
@@ -97,18 +99,18 @@ main (int argc, char *argv[])
     {
       fprintf (stderr, "antiwm:main.c:Out of memory!\n");
       exit (EXIT_FAILURE);
-    }  
+    }
   printf ("%d screens.\n", num_screens);
   /* initialize screens */
   for (i=0; i<num_screens; i++)
     {
       init_screen (&screens[i], i);
     }
-  /* setup signal handlers */  
+  /* setup signal handlers */
   if (signal (SIGALRM, alrm_handler) == SIG_IGN) signal (SIGALRM, SIG_IGN);
   if (signal (SIGTERM, sighandler) == SIG_IGN) signal (SIGTERM, SIG_IGN);
   if (signal (SIGINT, sighandler) == SIG_IGN) signal (SIGINT, SIG_IGN);
-  if (signal (SIGHUP, hup_handler) == SIG_IGN) 
+  if (signal (SIGHUP, hup_handler) == SIG_IGN)
     {
       printf ("Ignoring HUP.\n");
       signal (SIGHUP, SIG_IGN);
@@ -127,7 +129,7 @@ main (int argc, char *argv[])
   /* set initial window as active */
   a_current_window = a_window_head;
   set_active_window (a_current_window);
-  
+
   handle_events ();
   return EXIT_SUCCESS;
 }
@@ -162,18 +164,18 @@ init_screen (screen_info *s, int screen_num)
   gv.line_width = 1;
   gv.subwindow_mode = IncludeInferiors;
   gv.font = font->fid;
-  s->normal_gc = XCreateGC(dpy, s->root, 
-			   GCForeground | GCBackground | GCFunction 
-			   | GCLineWidth | GCSubwindowMode | GCFont, 
+  s->normal_gc = XCreateGC(dpy, s->root,
+			   GCForeground | GCBackground | GCFunction
+			   | GCLineWidth | GCSubwindowMode | GCFont,
 			   &gv);
   gv.foreground = bold_color.pixel;
-  s->bold_gc = XCreateGC(dpy, s->root, 
-			 GCForeground | GCBackground | GCFunction 
-			 | GCLineWidth | GCSubwindowMode | GCFont, 
+  s->bold_gc = XCreateGC(dpy, s->root,
+			 GCForeground | GCBackground | GCFunction
+			 | GCLineWidth | GCSubwindowMode | GCFont,
 			 &gv);
   XSelectInput(dpy, s->root,
                PropertyChangeMask | ColormapChangeMask
-               | SubstructureRedirectMask | KeyPressMask 
+               | SubstructureRedirectMask | KeyPressMask
                | SubstructureNotifyMask );
   XSync (dpy, 0);
   /* create bar window */

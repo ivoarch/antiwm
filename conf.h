@@ -1,5 +1,7 @@
 /* Configure AntiWM here, recompile, and install. */
 
+#define DISPLAY ":0"                 /* start on a specific display */
+
 /* key definitions */
 #define KEY_PREFIX      't'          /* prefix key */
 #define MODIFIER_PREFIX ControlMask  /* modifier prefix */
