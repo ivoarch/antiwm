@@ -6,7 +6,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
-#include <X11/keysymdef.h>
+#include <X11/keysym.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,30 +19,8 @@ extern Atom wm_state;
 void
 grab_keys (screen_info *s)
 {
-  int i;
 
-  for (i='0'; i<='9'; i++)
-    XGrabKey(dpy, XKeysymToKeycode (dpy, i ), AnyModifier, s->key_window, True,
-	     GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_TERM ), AnyModifier, s->key_window, True,
-	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_EDIT ), AnyModifier, s->key_window, True,
-	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_MENU ), AnyModifier, s->key_window, True,
-           GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_BANISH ), AnyModifier, s->key_window, True,
-	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_PREVWINDOW ), AnyModifier, s->key_window, True,
-	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_NEXTWINDOW ), AnyModifier, s->key_window, True,
-	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_TOGGLEBAR ), AnyModifier, s->key_window, True,
-	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_LASTWINDOW ), AnyModifier, s->key_window, True,
-	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_QUIT ), AnyModifier, s->key_window, True,
-	   GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode (dpy, KEY_PREFIX ), AnyModifier, s->key_window, True,
+  XGrabKey(dpy, AnyKey, AnyModifier, s->key_window, True,
 	   GrabModeAsync, GrabModeAsync);
 }
 
