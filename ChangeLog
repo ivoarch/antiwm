@@ -1,20 +1,25 @@
+Change Log for "AntiWM"
 
 Version 0.0.5 Jun 01 2009
 
-  * fixes a major bug that was causing 100% CPU usage
-  and a few other minor bugs.
+	* fixes a major bug that was causing 100% CPU usage
+	and a few other minor bugs.
 
 Version 0.0.4
 
-  * Was an attempted rewrite and was only released internally
-  before being scrapped.
+	* Was an attempted rewrite and was only released internally
+	before being scrapped.
+
+Version 0.0.3 Aug 03 2008
+
+	*
 
 Version 0.0.2 Sat, May 31 2008
 
-  * Many minor changes were made. Debug processes and messages have been
-  reworked. The code was cleaned up and optimizations were made. The
-  documentation was made more concise.
+	* Many minor changes were made. Debug processes and messages have been
+	reworked. The code was cleaned up and optimizations were made. The
+	documentation was made more concise.
 
 Version 0.0.1 Thu, May 22 2008
 
-  * Initial freshmeat announcement
+	* Initial freshmeat announcement

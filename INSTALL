@@ -1,0 +1,15 @@
+#!/bin/cat
+
+Installing AntiWM
+
+1. cd /path/to/antiwm/src
+
+2. Compile AntiWM:
+
+   make
+
+3. Installs AntiWM:
+
+   make install
+
+4. Edit your Xsession or ~/.xinitrc to call antiwm:
