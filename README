@@ -31,6 +31,8 @@ C-t t - Sends C-t to the current window.
 
 C-t C-q - Quit Antiwm.
 
+C-t C-r - Restart Antiwm.
+
 NOTE: These are the default settings. There is no antiwm.conf or antirc to edit.
 To configure AntiWM, edit the settings in 'conf.h', then recompile and install.
 
