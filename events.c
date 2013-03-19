@@ -212,6 +212,9 @@ handle_key (screen_info *s)
     case KEY_QUIT:
       running = 0;
       break;
+    case KEY_RESTART:
+      hup_handler ();
+      break;
     default:
 	fprintf (stderr, "Unknown key command %c", (char)XkbKeycodeToKeysym(dpy, ev.xkey.keycode, 0, 0));
       break;

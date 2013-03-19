@@ -8,7 +8,6 @@ void next_window ();
 void prev_window ();
 void last_window ();
 a_window *find_window (Window w);
-void maximize_current_window ();
 void set_active_window (a_window *a_w);
 void set_current_window (a_window *win);
 void goto_window_number (int n);

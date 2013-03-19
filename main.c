@@ -193,6 +193,7 @@ init_screen (screen_info *s, int screen_num)
 void
 clean_up ()
 {
+  XSync(dpy, False);
   XSetInputFocus (dpy, PointerRoot, RevertToPointerRoot, CurrentTime);
   XCloseDisplay (dpy);
 }

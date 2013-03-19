@@ -14,9 +14,10 @@
 #define KEY_LASTWINDOW  't'	     /* toggle current and previous windows */
 #define KEY_TOGGLEBAR   'w'	     /* toggle display of the bar */
 #define KEY_QUIT        'q'          /* quit antiwm */
+#define KEY_RESTART     'r'          /* reload antiwm configuration (need to (re)compile first). */
 
 /* default commands */
-#define TERM_PROG      "urxvt"
+#define TERM_PROG      "xterm"
 #define EDIT_PROG      "emacs"
 #define MENU_PROG      "dmenu_run"
 
