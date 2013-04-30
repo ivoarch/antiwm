@@ -1,5 +1,12 @@
 Change Log for "AntiWM"
 
+Version 0.0.6 Apr 30 2013
+
+	* Aded new commands `banish`, `menu`, `restart`, `reload` ...
+        Fix some warnings during compilation.
+	Created Change log file for "Antiwm".
+	Add uninstall target to makefile.
+
 Version 0.0.5 Jun 01 2009
 
 	* fixes a major bug that was causing 100% CPU usage
